@@ -8,11 +8,17 @@ export default function ChatBox() {
   async function handleSend() {
     if (!input.trim()) return;
 
-    const userMsg = { sender: "you", text: input };
-    setMessages([...messages, userMsg]);
+    setMessages((prev) => [...prev, { sender: "you", text: input }]);
 
     const reply = await sendChat(input);
-    setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        sender: "bot",
+        text: reply.reply || reply.message || JSON.stringify(reply),
+      },
+    ]);
 
     setInput("");
   }
@@ -21,7 +27,9 @@ export default function ChatBox() {
     <div className="chat-box">
       <div className="messages">
         {messages.map((m, i) => (
-          <p key={i} className={m.sender}>{m.text}</p>
+          <p key={i} className={m.sender}>
+            {m.text}
+          </p>
         ))}
       </div>
 

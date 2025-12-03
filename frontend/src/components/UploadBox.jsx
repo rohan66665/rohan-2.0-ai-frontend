@@ -10,7 +10,8 @@ export default function UploadBox() {
     setStatus("Uploading...");
 
     const res = await uploadFile(file);
-    setStatus(res);
+
+    setStatus(res.status || res.message || "Uploaded");
   }
 
   return (
