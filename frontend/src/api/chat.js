@@ -6,5 +6,7 @@ export async function sendChat(message) {
   });
 
   const data = await res.json();
+
+  // Safely return only the reply text
   return data.reply || JSON.stringify(data);
 }

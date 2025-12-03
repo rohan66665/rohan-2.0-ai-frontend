@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { sendChat } from "../api/chat";
+import "./ChatBox.css";
 
 export default function ChatBox() {
   const [input, setInput] = useState("");
@@ -14,10 +15,7 @@ export default function ChatBox() {
 
     setMessages((prev) => [
       ...prev,
-      {
-        sender: "bot",
-        text: reply.reply || reply.message || JSON.stringify(reply),
-      },
+      { sender: "bot", text: reply || "No reply received" },
     ]);
 
     setInput("");
@@ -27,9 +25,7 @@ export default function ChatBox() {
     <div className="chat-box">
       <div className="messages">
         {messages.map((m, i) => (
-          <p key={i} className={m.sender}>
-            {m.text}
-          </p>
+          <p key={i} className={m.sender}>{m.text}</p>
         ))}
       </div>
 
