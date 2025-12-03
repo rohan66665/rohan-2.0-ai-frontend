@@ -1,0 +1,1 @@
+This is a sample RAG document for testing. Add more text files for better responses.

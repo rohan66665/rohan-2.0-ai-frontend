@@ -1,0 +1,64 @@
+/* src/components/UploadBox.css */
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upload-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.folder-icon {
+  font-size: 26px;
+}
+
+.upload-subtitle {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.upload-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* hide real input */
+#file-input {
+  display: none;
+}
+
+.file-button,
+.upload-button {
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+}
+
+.file-button {
+  background: #e5e7eb;
+}
+
+.upload-button {
+  background: #2563eb;
+  color: white;
+}
+
+.status {
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+@media (max-width: 600px) {
+  .upload-controls {
+    justify-content: space-between;
+  }
+}

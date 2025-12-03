@@ -1,0 +1,311 @@
+/* src/App.css */
+
+/* GLOBALS */
+:root {
+  --bg-light: #f4f5fb;
+  --bg-dark: #050816;
+  --card-light: #ffffff;
+  --card-dark: #0f172a;
+  --text-light: #0f172a;
+  --text-dark: #e5e7eb;
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.12);
+  --border-soft: rgba(148, 163, 184, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ROOT */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.app-root.light {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+.app-root.dark {
+  background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+  color: var(--text-dark);
+}
+
+/* HEADER */
+.app-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.9),
+    rgba(15, 23, 42, 0.6),
+    transparent
+  );
+  color: #e5e7eb;
+}
+
+.app-root.light .app-header {
+  background: linear-gradient(
+    to bottom,
+    rgba(248, 250, 252, 0.96),
+    rgba(248, 250, 252, 0.8),
+    transparent
+  );
+  color: #0f172a;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 20%, #60a5fa, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5);
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.theme-toggle {
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  padding: 6px 14px;
+  background: rgba(15, 23, 42, 0.7);
+  color: #e5e7eb;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.app-root.light .theme-toggle {
+  background: white;
+  color: #111827;
+}
+
+/* MAIN LAYOUT */
+.app-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.5fr);
+  gap: 16px;
+  padding: 16px;
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.panel {
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.75);
+}
+
+.app-root.light .panel {
+  background: var(--card-light);
+  border-color: rgba(148, 163, 184, 0.3);
+  box-shadow: 0 18px 40px rgba(148, 163, 184, 0.35);
+}
+
+/* CHAT */
+.chat-window {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+  margin-bottom: 4px;
+}
+
+.message-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+.message-row.user .avatar {
+  order: 2;
+}
+
+.message-row.user .bubble {
+  order: 1;
+  background: linear-gradient(to right, #2563eb, #4f46e5);
+  color: white;
+}
+
+.message-row.bot .bubble {
+  background: rgba(15, 23, 42, 0.85);
+  color: #e5e7eb;
+}
+
+.app-root.light .message-row.bot .bubble {
+  background: var(--accent-soft);
+  color: #0f172a;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.app-root.light .avatar {
+  background: #e5e7eb;
+}
+
+.bubble {
+  padding: 10px 12px;
+  border-radius: 16px;
+  max-width: 100%;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.sources {
+  margin-top: 6px;
+  border-top: 1px solid rgba(148, 163, 184, 0.4);
+  padding-top: 6px;
+  font-size: 12px;
+}
+
+.source {
+  margin-top: 4px;
+}
+
+.src-text {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.score {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.chat-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.chat-controls textarea {
+  flex: 1;
+  resize: none;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  padding: 8px 10px;
+  font-size: 14px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+}
+
+.app-root.light .chat-controls textarea {
+  background: white;
+  color: #111827;
+}
+
+.chat-controls button {
+  border-radius: 12px;
+  border: none;
+  padding: 0 16px;
+  background: linear-gradient(to right, #2563eb, #4f46e5);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.chat-controls button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* FOOTER */
+.app-footer {
+  padding: 8px 16px 14px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* RESPONSIVE (mobile) */
+@media (max-width: 900px) {
+  .app-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chat-controls button {
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-main {
+    padding: 10px;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+
+  .brand-text h1 {
+    font-size: 18px;
+  }
+
+  .chat-controls textarea {
+    font-size: 13px;
+  }
+}
