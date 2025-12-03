@@ -1,14 +1,14 @@
-import ChatBox from "./components/ChatBox";
-import UploadBox from "./components/UploadBox";
+import React from "react";
+import ChatBox from "./components/ChatBox.jsx";
+import UploadBox from "./components/UploadBox.jsx";
+import "./App.css";
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <h1>Rohan 2.0 AI Assistant</h1>
-      <ChatBox />
+    <div className="page">
+      <h1>Rohan 2.0 — AI Chatbot</h1>
       <UploadBox />
+      <ChatBox />
     </div>
   );
 }
-
-export default App;

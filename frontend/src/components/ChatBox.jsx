@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { chat } from "../api/chat";
+import React, { useState } from "react";
+import { sendChat } from "../api/chat";
 
 export default function ChatBox() {
   const [input, setInput] = useState("");
@@ -8,24 +8,32 @@ export default function ChatBox() {
   async function handleSend() {
     if (!input.trim()) return;
 
-    setMessages([...messages, { sender: "You", text: input }]);
+    const userMsg = { sender: "you", text: input };
+    setMessages([...messages, userMsg]);
 
-    const res = await chat(input);
-    setMessages((m) => [...m, { sender: "AI", text: res.reply }]);
+    const reply = await sendChat(input);
+    setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
 
     setInput("");
   }
 
   return (
-    <div>
-      <h2>Chat</h2>
-      <div>
+    <div className="chat-box">
+      <div className="messages">
         {messages.map((m, i) => (
-          <p key={i}><b>{m.sender}:</b> {m.text}</p>
+          <p key={i} className={m.sender}>{m.text}</p>
         ))}
       </div>
-      <input value={input} onChange={(e) => setInput(e.target.value)} />
-      <button onClick={handleSend}>Send</button>
+
+      <div className="input-row">
+        <input
+          type="text"
+          placeholder="Send a message..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button onClick={handleSend}>Send</button>
+      </div>
     </div>
   );
 }
