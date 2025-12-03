@@ -1,5 +1,0 @@
-{
-  "version": 2,
-  "buildCommand": "cd rag-frontend && npm install && npm run build",
-  "outputDirectory": "rag-frontend/dist"
-}
